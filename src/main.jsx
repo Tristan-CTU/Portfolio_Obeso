@@ -63,7 +63,7 @@ function App() {
     <header className="topbar flex items-center">
       <a className="brand" href="#home" aria-label="Tristan Obeso home"><span className="brand-mark">T<span>O</span></span><span className="brand-name">TRISTAN OBESO<small></small></span></a>
       <nav className="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-      <div className="nav-actions flex items-center"><button className="theme-toggle" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'}><span className="theme-icon" aria-hidden="true">{theme === 'dark' ? '☼' : '☾'}</span></button><a className="hire-button" href="#contact">Let’s talk <span>↗</span></a></div>
+      <div className="nav-actions flex items-center"><button className="theme-toggle" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'}><span className="theme-icon" aria-hidden="true">{theme === 'dark' ? '☼' : '☾'}</span></button><a className="hire-button" href="#contact">Let’s talk</a></div>
     </header>
 
     <main id="home">

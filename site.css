@@ -63,3 +63,5 @@ html[data-theme="dark"] .gallery:has(.featured-project[data-active-slide="0"]) .
 
 .hero h1{font-size:clamp(42px,5.3vw,72px);line-height:1.02;letter-spacing:-.065em}
 @media(max-width:520px){.hero h1{font-size:clamp(40px,12.5vw,56px)}}
+
+@media(min-width:761px){.topbar{width:min(980px,calc(100% - 40px))}}
