@@ -114,6 +114,8 @@ function App() {
         </div>
       </section>
 
+      <section className="about section-wrap" id="about"><div className="about-label"><p className="eyebrow">ABOUT ME</p><span>ABOUT / 001</span></div><div className="about-content"><h2>A little about <em>me.</em></h2><p>I’ll add more about myself here soon.</p></div></section>
+
       <section className="work section-wrap" id="work">
         <div className="section-heading"><div><p className="eyebrow">SELECTED MISSIONS / 2024—26</p><h2>Work gallery<span>.</span></h2></div><p className="section-note">A few worlds I’ve helped bring to life.<br/>Concept, craft, and a little code.</p></div>
         <div className="gallery" aria-live="polite">
@@ -127,8 +129,6 @@ function App() {
           <div className="gallery-controls"><div className="gallery-dots" aria-label="Choose project">{projects.map((item, index) => <button key={item.name} className={`gallery-dot ${index === activeSlide ? 'active' : ''}`} onClick={() => setActiveSlide(index)} aria-label={`Show project ${index + 1}: ${item.name}`} aria-current={index === activeSlide ? 'true' : undefined}/>)}</div><span className="gallery-count"><b>{String(activeSlide + 1).padStart(2, '0')}</b> / 03</span><div className="gallery-arrows"><button onClick={() => stepSlide(-1)} aria-label="Previous project">←</button><button onClick={() => stepSlide(1)} aria-label="Next project">→</button></div></div>
         </div>
       </section>
-
-      <section className="about section-wrap" id="about"><div className="about-label"><p className="eyebrow">THE PLAYER BEHIND THE PIXELS</p><span>ABOUT / 002</span></div><div className="about-content"><h2>Curiosity is my<br/>favorite <em>power-up.</em></h2><p>Games taught me to look closer, experiment, and keep iterating. I bring that same energy to design and development, partnering with good people to make digital experiences that feel clear, considered, and rewarding to use.</p><div className="skills"><span>PRODUCT DESIGN</span><span>VISUAL IDENTITY</span><span>FRONTEND DEVELOPMENT</span><span>GAME THINKING</span></div></div></section>
 
       <section className="contact section-wrap" id="contact"><p className="eyebrow"><span className="live-dot"/> NEXT QUEST: COLLABORATION</p><div className="contact-row"><h2>Have a good<br/>one in <em>mind?</em></h2><button className="contact-link" type="button" onClick={() => setChatOpen(true)}>LET’S TALK</button></div><div className="contact-details"><a href="tel:+639225910755"><span>PHONE</span><strong>0922 591 0755</strong></a><a href="https://www.facebook.com/search/top/?q=Tristan%20Obeso" target="_blank" rel="noreferrer"><span>FACEBOOK</span><strong>Tristan Obeso ↗</strong></a><a href="https://www.linkedin.com/search/results/people/?keywords=Tristan%20Obeso" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Tristan Obeso ↗</strong></a><a href="https://www.instagram.com/trstanobso/" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@trstanobso ↗</strong></a><a href="mailto:tristanobeso@gmail.com"><span>EMAIL</span><strong>tristanobeso@gmail.com ↗</strong></a></div><div className="contact-foot"><span>TRISTAN OBESO © <span id="year">2026</span></span><span>BUILT WITH INTENTION · GMT+8</span><a href="#home">BACK TO TOP ↑</a></div></section>
     </main>
