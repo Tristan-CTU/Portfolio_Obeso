@@ -8,6 +8,36 @@ const projects = [
   { name: 'Signal', type: '03 / PRODUCT DESIGN · INTERACTION', description: 'A focused listening experience that makes finding new music feel like play.', word: 'signal', lineOne: 'Find your', lineTwo: 'frequency.', tags: 'TUNE IN · DISCOVER MORE', year: 'CONCEPT / 2026' },
 ];
 
+const languages = [
+  { name: 'HTML5', icon: 'html5', color: 'E34F26' },
+  { name: 'CSS3', icon: 'css3', color: '1572B6' },
+  { name: 'PHP', icon: 'php', color: '777BB4' },
+  { name: 'TypeScript', icon: 'typescript', color: '3178C6' },
+  { name: 'Python', icon: 'python', color: '3776AB' },
+];
+
+const skillGroups = [
+  { title: 'Frameworks', items: 'React · Laravel · Next.js · Livewire · Express.js · Tailwind CSS' },
+  { title: 'Backend & APIs', items: 'Node.js · MVC · REST APIs · MySQL · PostgreSQL · NoSQL · Prisma ORM · JWT' },
+  { title: 'Tools & platforms', items: 'Git · Docker · NPM · Vercel · Render · Supabase · Cloudinary · AWS · Google Cloud' },
+  { title: 'AI tools & workflows', items: 'Claude Code · OpenCode · Kiro · OpenRouter · OmniRoute · 9route · Agentic AI · Antigravity' },
+  { title: 'Developer approach', items: 'Script-driven · Test-driven · Requirements gathering · SDLC · Agile/Scrum · DevOps · CI/CD · Documentation' },
+];
+
+const certifications = [
+  { name: 'AWS SBG Core Team Member Badge', issuer: 'Amazon Web Services', date: 'Jul 2026', art: 'aws' },
+  { name: 'Networking Basics', issuer: 'Cisco', date: 'May 2025', art: 'cisco' },
+  { name: 'iLeap IP Course Certificate', issuer: 'IPOPHL', date: 'May 2024', art: 'ipophil' },
+  { name: 'Introduction to Python', issuer: 'Coursera', date: 'Apr 2024', art: 'coursera' },
+];
+
+const volunteering = [
+  { role: 'Core Technical Officer', group: 'AWS Student Builder Group · Cebu Technological University — Main Campus', date: 'Jul 2026 – Present', location: 'Cebu City, Philippines', details: ['Conduct technical sessions and hands-on workshops covering cloud computing, software development, and AWS technologies.', 'Collaborate with fellow officers to organize activities and guide students through practical learning and projects.'] },
+  { role: 'Chief Technical Officer', group: 'Google Developer Group · Cebu Technological University — Main Campus', date: 'Oct 2026 – Present', location: 'Cebu City, Philippines', details: ['Promoted in October 2026 after serving as Web & Systems Lead Officer from August to September 2026.', 'Manage software development projects and technical programs, coordinate the team, and support the group’s website and hackathons.'] },
+  { role: 'Usher & Website Maintainer', group: 'AWS Community Day Cebu 2026', date: 'Sep 2026', location: 'University of the Philippines Cebu', details: ['Supported attendee guidance and crowd flow during the event.', 'Maintained the event website by adding content, improving responsiveness, and applying organizer feedback.'] },
+  { role: 'Web & Systems Lead Officer', group: 'Google Developer Group · Cebu Technological University — Main Campus', date: 'Aug 2026 – Sep 2026', location: 'Cebu City, Philippines', details: ['Led development of the group website, delegated tasks, and coordinated delivery with the technical team.'] },
+];
+
 function Avatar() {
   return <svg className="avatar" viewBox="0 0 460 550" role="img" aria-labelledby="avatar-title">
     <title id="avatar-title">Stylized illustrated portrait representing Tristan</title>
@@ -115,6 +145,27 @@ function App() {
       </section>
 
       <section className="about section-wrap" id="about"><div className="about-label"><p className="eyebrow">ABOUT ME</p><span>ABOUT / 001</span></div><div className="about-content"><h2>A little about <em>me.</em></h2><p>I’ll add more about myself here soon.</p></div></section>
+
+      <section className="skills-section section-wrap" id="skills">
+        <div className="section-heading"><div><p className="eyebrow">TOOLS IN MY TOOLKIT</p><h2>Technical skills<span>.</span></h2></div><p className="section-note">Languages, frameworks,<br/>and ways I like to build.</p></div>
+        <div className="language-grid" aria-label="Programming languages">
+          {languages.map((language) => <article className="language-card" key={language.name}><div className="language-logo"><img src={`https://cdn.simpleicons.org/${language.icon}/${language.color}`} alt={`${language.name} logo`} loading="lazy"/></div><h3>{language.name}</h3></article>)}
+        </div>
+        <div className="skill-groups">{skillGroups.map((group) => <article className="skill-group" key={group.title}><h3>{group.title}</h3><p>{group.items}</p></article>)}</div>
+      </section>
+
+      <section className="cert-section section-wrap" id="certifications">
+        <div className="section-heading"><div><p className="eyebrow">LEARNING & RECOGNITION</p><h2>Certifications<span>.</span></h2></div><p className="section-note">Certificate pictures can be<br/>added here when you’re ready.</p></div>
+        <div className="certificate-grid">{certifications.map((certificate) => <article className="certificate-card" key={certificate.name}>
+          <div className={`certificate-image certificate-${certificate.art}`}><div className="certificate-frame"><span className="certificate-stamp">{certificate.issuer === 'Amazon Web Services' ? 'aws' : certificate.issuer}</span><span className="certificate-rule"/><span className="certificate-image-hint">Add certificate image</span></div></div>
+          <div className="certificate-info"><p>{certificate.issuer} · {certificate.date}</p><h3>{certificate.name}</h3></div>
+        </article>)}</div>
+      </section>
+
+      <section className="volunteer-section section-wrap" id="volunteering">
+        <div className="section-heading"><div><p className="eyebrow">COMMUNITY & LEADERSHIP</p><h2>Volunteering<span>.</span></h2></div><p className="section-note">Building with people,<br/>sharing what I learn.</p></div>
+        <div className="volunteer-list">{volunteering.map((item) => <article className="volunteer-item" key={`${item.role}-${item.date}`}><div className="volunteer-heading"><div><h3>{item.role}</h3><p>{item.group}</p></div><div className="volunteer-date"><strong>{item.date}</strong><span>{item.location}</span></div></div><ul>{item.details.map((detail) => <li key={detail}>{detail}</li>)}</ul></article>)}</div>
+      </section>
 
       <section className="work section-wrap" id="work">
         <div className="section-heading"><div><p className="eyebrow">SELECTED MISSIONS / 2024—26</p><h2>Work gallery<span>.</span></h2></div><p className="section-note">A few worlds I’ve helped bring to life.<br/>Concept, craft, and a little code.</p></div>
