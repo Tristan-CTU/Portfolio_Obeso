@@ -62,6 +62,24 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const targets = document.querySelectorAll('.section-heading, .featured-project, .about-content, .contact-row, .contact-details');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    targets.forEach((target) => {
+      target.classList.add('scroll-reveal');
+      observer.observe(target);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!chatOpen) return undefined;
     const handleEscape = (event) => { if (event.key === 'Escape') setChatOpen(false); };
     document.addEventListener('keydown', handleEscape);
@@ -103,7 +121,7 @@ function App() {
             {projects.map((item, index) => <button key={item.name} className={`rail-card rail-${['one','two','three'][index]}`} onClick={() => setActiveSlide(index)} aria-label={`Show ${item.name} project`} aria-pressed={index === activeSlide}><span className="rail-art"><b>{item.word}</b><i>{item.tags}</i></span></button>)}
           </div>
           <article className="featured-project" data-active-slide={activeSlide}>
-            <ProjectVisual project={project} index={activeSlide}/>
+            <ProjectVisual key={activeSlide} project={project} index={activeSlide}/>
             <div className="project-info"><div><p className="project-kicker">{project.type}</p><h3 className="project-title">{project.name}</h3><p className="project-description">{project.description}</p></div><a className="project-arrow" href="#contact" aria-label={`Discuss a project like ${project.name}`}>↗</a></div>
           </article>
           <div className="gallery-controls"><div className="gallery-dots" aria-label="Choose project">{projects.map((item, index) => <button key={item.name} className={`gallery-dot ${index === activeSlide ? 'active' : ''}`} onClick={() => setActiveSlide(index)} aria-label={`Show project ${index + 1}: ${item.name}`} aria-current={index === activeSlide ? 'true' : undefined}/>)}</div><span className="gallery-count"><b>{String(activeSlide + 1).padStart(2, '0')}</b> / 03</span><div className="gallery-arrows"><button onClick={() => stepSlide(-1)} aria-label="Previous project">←</button><button onClick={() => stepSlide(1)} aria-label="Next project">→</button></div></div>
