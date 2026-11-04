@@ -17,11 +17,21 @@ const languages = [
 ];
 
 const skillGroups = [
-  { title: 'Frameworks', items: 'React · Laravel · Next.js · Livewire · Express.js · Tailwind CSS' },
-  { title: 'Backend & APIs', items: 'Node.js · MVC · REST APIs · MySQL · PostgreSQL · NoSQL · Prisma ORM · JWT' },
-  { title: 'Tools & platforms', items: 'Git · Docker · NPM · Vercel · Render · Supabase · Cloudinary · AWS · Google Cloud' },
-  { title: 'AI tools & workflows', items: 'Claude Code · OpenCode · Kiro · OpenRouter · OmniRoute · 9route · Agentic AI · Antigravity' },
-  { title: 'Developer approach', items: 'Script-driven · Test-driven · Requirements gathering · SDLC · Agile/Scrum · DevOps · CI/CD · Documentation' },
+  { title: 'Frameworks', items: [
+    { name: 'React', icon: 'react', color: '61DAFB', mark: 'R' }, { name: 'Laravel', icon: 'laravel', color: 'FF2D20', mark: 'L' }, { name: 'Next.js', icon: 'nextdotjs', color: '111111', mark: 'N' }, { name: 'Livewire', icon: 'livewire', color: '4E56A6', mark: 'LW' }, { name: 'Express.js', icon: 'express', color: '555555', mark: 'EX' }, { name: 'Tailwind CSS', icon: 'tailwindcss', color: '06B6D4', mark: 'TW' },
+  ] },
+  { title: 'Backend & APIs', items: [
+    { name: 'Node.js', icon: 'nodedotjs', color: '5FA04E', mark: 'N' }, { name: 'MVC', mark: 'MVC' }, { name: 'REST APIs', mark: 'API' }, { name: 'MySQL', icon: 'mysql', color: '4479A1', mark: 'SQL' }, { name: 'PostgreSQL', icon: 'postgresql', color: '4169E1', mark: 'PG' }, { name: 'NoSQL', mark: 'DB' }, { name: 'Prisma ORM', icon: 'prisma', color: '2D3748', mark: 'P' }, { name: 'JWT', mark: 'JWT' },
+  ] },
+  { title: 'Tools & platforms', items: [
+    { name: 'Git', icon: 'git', color: 'F05032', mark: 'G' }, { name: 'Docker', icon: 'docker', color: '2496ED', mark: 'D' }, { name: 'NPM', icon: 'npm', color: 'CB3837', mark: 'npm' }, { name: 'Vercel', icon: 'vercel', color: '111111', mark: 'V' }, { name: 'Render', icon: 'render', color: '46E3B7', mark: 'R' }, { name: 'Supabase', icon: 'supabase', color: '3FCF8E', mark: 'S' }, { name: 'Cloudinary', icon: 'cloudinary', color: '3448C5', mark: 'C' }, { name: 'AWS', icon: 'amazonaws', color: 'FF9900', mark: 'AWS' }, { name: 'Google Cloud', icon: 'googlecloud', color: '4285F4', mark: 'GCP' },
+  ] },
+  { title: 'AI tools & workflows', items: [
+    { name: 'Claude Code', icon: 'anthropic', color: '191919', mark: 'C' }, { name: 'OpenCode CLI', mark: 'OC' }, { name: 'Kiro CLI', mark: 'K' }, { name: 'OpenRouter', icon: 'openrouter', color: '6467F2', mark: 'OR' }, { name: 'OmniRoute', mark: 'OR' }, { name: '9route', mark: '9R' }, { name: 'AI Skills', mark: 'AI' }, { name: 'Agentic AI', mark: 'AG' }, { name: 'Antigravity', mark: 'A' },
+  ] },
+  { title: 'Developer approach', items: [
+    { name: 'Script-driven', mark: '</>' }, { name: 'Test-driven', mark: 'TDD' }, { name: 'Requirements', mark: 'REQ' }, { name: 'SDLC', mark: 'SDLC' }, { name: 'Agile / Scrum', mark: 'A/S' }, { name: 'DevOps', mark: '∞' }, { name: 'CI / CD', mark: 'CI' }, { name: 'Documentation', mark: 'DOC' },
+  ] },
 ];
 
 const certifications = [
@@ -151,7 +161,7 @@ function App() {
         <div className="language-grid" aria-label="Programming languages">
           {languages.map((language) => <article className="language-card" key={language.name}><div className="language-logo"><img src={`https://cdn.simpleicons.org/${language.icon}/${language.color}`} alt={`${language.name} logo`} loading="lazy"/></div><h3>{language.name}</h3></article>)}
         </div>
-        <div className="skill-groups">{skillGroups.map((group) => <article className="skill-group" key={group.title}><h3>{group.title}</h3><p>{group.items}</p></article>)}</div>
+        <div className="skill-groups">{skillGroups.map((group) => <article className="skill-group" key={group.title}><h3>{group.title}</h3><div className="skill-pills">{group.items.map((item) => <span className="skill-pill" key={item.name}><span className="skill-icon" aria-hidden="true"><span className="skill-icon-fallback">{item.mark}</span>{item.icon && <img className="skill-icon-image" src={`https://cdn.simpleicons.org/${item.icon}/${item.color}`} alt="" loading="lazy" onError={(event) => { event.currentTarget.style.display = 'none'; }}/>}</span><span>{item.name}</span></span>)}</div></article>)}</div>
       </section>
 
       <section className="cert-section section-wrap" id="certifications">
