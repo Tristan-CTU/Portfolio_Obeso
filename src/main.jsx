@@ -91,7 +91,7 @@ function App() {
       <section className="hero">
         <div className="hero-status"><span className="live-dot"/> OPEN TO THE RIGHT QUEST <span className="status-separator">/</span> PHILIPPINES · GMT+8</div>
         <div className="hero-stage">
-          <div className="hero-copy"><p className="eyebrow">DESIGNER <span>×</span> DEVELOPER <span>×</span></p><h1>Hi, I&apos;m<br/>Tristan Menver<br/>Neil E. Obeso</h1><p className="hero-description">I turn curious ideas into thoughtful digital experiences — with a player’s instinct for discovery and a builder’s eye for detail.</p><a className="primary-link" href="#work">Explore my work <span>↓</span></a></div>
+          <div className="hero-copy"><p className="eyebrow">DESIGNER <span>×</span> DEVELOPER <span>×</span></p><h1>Hi, I&apos;m<br/>Tristan Menver<br/>Neil E. Obeso</h1><p className="hero-description">I turn curious ideas into thoughtful digital experiences — with a player’s instinct for discovery and a builder’s eye for detail.</p><div className="hero-actions"><a className="primary-link" href="#work">Explore my work <span>↓</span></a><a className="resume-link" href="/resume.pdf" download="Tristan-Obeso-Resume.pdf">Résumé <span>↓</span></a></div></div>
           <div className="portrait-stage" aria-label="Abstract illustrated player avatar"><div className="portrait-grid"/><div className="portrait-halo"/><Avatar/><span className="portrait-tag tag-top">PLAYER 01 <i>● ONLINE</i></span><span className="portrait-tag tag-bottom">LOADOUT: IDEAS / SKILLS / COFFEE</span><span className="portrait-cross">＋</span></div>
           <span className="hero-outline" aria-hidden="true">TRISTAN</span>
         </div>
