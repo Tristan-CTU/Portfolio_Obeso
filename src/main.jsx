@@ -157,7 +157,7 @@ function App() {
       <section className="cert-section section-wrap" id="certifications">
         <div className="section-heading"><div><p className="eyebrow">LEARNING & RECOGNITION</p><h2>Certifications<span>.</span></h2></div><p className="section-note">Certificate pictures can be<br/>added here when you’re ready.</p></div>
         <div className="certificate-grid">{certifications.map((certificate) => <article className="certificate-card" key={certificate.name}>
-          <div className={`certificate-image certificate-${certificate.art}`}><div className="certificate-frame"><span className="certificate-stamp">{certificate.issuer === 'Amazon Web Services' ? 'aws' : certificate.issuer}</span><span className="certificate-rule"/><span className="certificate-image-hint">Add certificate image</span></div></div>
+          <div className={`certificate-image certificate-${certificate.art}`}>{certificate.image ? <img className="certificate-photo" src={certificate.image} alt={`${certificate.name} certificate`} loading="lazy"/> : <div className="certificate-frame"><span className="certificate-stamp">{certificate.issuer === 'Amazon Web Services' ? 'aws' : certificate.issuer}</span><span className="certificate-rule"/><span className="certificate-image-hint">Add certificate image</span></div>}</div>
           <div className="certificate-info"><p>{certificate.issuer} · {certificate.date}</p><h3>{certificate.name}</h3></div>
         </article>)}</div>
       </section>
