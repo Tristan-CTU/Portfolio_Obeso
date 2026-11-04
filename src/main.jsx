@@ -44,6 +44,10 @@ function App() {
     catch { return 'light'; }
   });
   const [activeSlide, setActiveSlide] = useState(0);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [senderName, setSenderName] = useState('');
+  const [senderEmail, setSenderEmail] = useState('');
+  const [message, setMessage] = useState('');
   const project = projects[activeSlide];
 
   useEffect(() => {
@@ -57,13 +61,30 @@ function App() {
     if (year) year.textContent = String(new Date().getFullYear());
   }, []);
 
+  useEffect(() => {
+    if (!chatOpen) return undefined;
+    const handleEscape = (event) => { if (event.key === 'Escape') setChatOpen(false); };
+    document.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [chatOpen]);
+
   const stepSlide = (step) => setActiveSlide((current) => (current + step + projects.length) % projects.length);
+  const sendMessage = (event) => {
+    event.preventDefault();
+    const subject = `Portfolio message from ${senderName}`;
+    const body = `Hi Tristan,\n\n${message}\n\nFrom: ${senderName}\nEmail: ${senderEmail}`;
+    window.location.href = `mailto:tristanobeso@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
 
   return <>
     <header className="topbar flex items-center">
       <a className="brand" href="#home" aria-label="Tristan Obeso home"><span className="brand-mark">T<span>O</span></span><span className="brand-name">TRISTAN OBESO<small></small></span></a>
       <nav className="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-      <div className="nav-actions flex items-center"><button className="theme-toggle" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'}><span className="theme-icon" aria-hidden="true">{theme === 'dark' ? '☼' : '☾'}</span></button><a className="hire-button" href="#contact">Let’s talk</a></div>
+      <div className="nav-actions flex items-center"><button className="theme-toggle" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'}><span className="theme-icon" aria-hidden="true">{theme === 'dark' ? '☼' : '☾'}</span></button><button className="hire-button" type="button" onClick={() => setChatOpen(true)}>Let’s talk</button></div>
     </header>
 
     <main id="home">
@@ -93,8 +114,9 @@ function App() {
 
       <section className="about section-wrap" id="about"><div className="about-label"><p className="eyebrow">THE PLAYER BEHIND THE PIXELS</p><span>ABOUT / 002</span></div><div className="about-content"><h2>Curiosity is my<br/>favorite <em>power-up.</em></h2><p>Games taught me to look closer, experiment, and keep iterating. I bring that same energy to design and development, partnering with good people to make digital experiences that feel clear, considered, and rewarding to use.</p><div className="skills"><span>PRODUCT DESIGN</span><span>VISUAL IDENTITY</span><span>FRONTEND DEVELOPMENT</span><span>GAME THINKING</span></div></div></section>
 
-      <section className="contact section-wrap" id="contact"><p className="eyebrow"><span className="live-dot"/> NEXT QUEST: COLLABORATION</p><div className="contact-row"><h2>Have a good<br/>one in <em>mind?</em></h2><a className="contact-link" href="mailto:hello@tristanobeso.com">LET’S TALK <span>↗</span></a></div><div className="contact-foot"><span>TRISTAN OBESO © <span id="year">2026</span></span><span>BUILT WITH INTENTION · GMT+8</span><a href="#home">BACK TO TOP ↑</a></div></section>
+      <section className="contact section-wrap" id="contact"><p className="eyebrow"><span className="live-dot"/> NEXT QUEST: COLLABORATION</p><div className="contact-row"><h2>Have a good<br/>one in <em>mind?</em></h2><button className="contact-link" type="button" onClick={() => setChatOpen(true)}>LET’S TALK</button></div><div className="contact-details"><a href="tel:+639225910755"><span>PHONE</span><strong>0922 591 0755</strong></a><a href="https://www.facebook.com/search/top/?q=Tristan%20Obeso" target="_blank" rel="noreferrer"><span>FACEBOOK</span><strong>Tristan Obeso ↗</strong></a><a href="https://www.linkedin.com/search/results/people/?keywords=Tristan%20Obeso" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Tristan Obeso ↗</strong></a><a href="https://www.instagram.com/trstanobso/" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@trstanobso ↗</strong></a><a href="mailto:tristanobeso@gmail.com"><span>EMAIL</span><strong>tristanobeso@gmail.com ↗</strong></a></div><div className="contact-foot"><span>TRISTAN OBESO © <span id="year">2026</span></span><span>BUILT WITH INTENTION · GMT+8</span><a href="#home">BACK TO TOP ↑</a></div></section>
     </main>
+    {chatOpen && <div className="chat-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setChatOpen(false); }}><section className="chat-box" role="dialog" aria-modal="true" aria-labelledby="chat-title"><header className="chat-header"><div><span className="chat-avatar">TO</span><span><strong id="chat-title">Message Tristan</strong><small><i/> Usually replies by email</small></span></div><button type="button" className="chat-close" onClick={() => setChatOpen(false)} aria-label="Close message window">×</button></header><div className="chat-thread"><div className="chat-bubble">Hi! Thanks for stopping by. Leave me a message and it’ll be addressed to my Gmail.</div><span className="chat-time">TRISTAN · EMAIL</span></div><form className="chat-form" onSubmit={sendMessage}><label>Your name<input required autoComplete="name" value={senderName} onChange={(event) => setSenderName(event.target.value)} placeholder="Jane Smith"/></label><label>Your email<input required type="email" autoComplete="email" value={senderEmail} onChange={(event) => setSenderEmail(event.target.value)} placeholder="jane@example.com"/></label><label>Message<textarea required rows="3" value={message} onChange={(event) => setMessage(event.target.value)} placeholder="What would you like to talk about?"/></label><button className="send-message" type="submit">Continue to email <span>↗</span></button><p>Your email app will open with your message ready to send.</p></form></section></div>}
   </>;
 }
 
