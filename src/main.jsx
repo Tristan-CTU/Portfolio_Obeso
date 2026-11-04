@@ -16,14 +16,14 @@ function Avatar() {
       <linearGradient id="skin" x1="0" x2="1"><stop stopColor="#b98260"/><stop offset="1" stopColor="#e1b18b"/></linearGradient>
     </defs>
     <path d="M67 550c9-102 51-164 163-176 114 12 155 74 164 176H67Z" fill="url(#jacket)"/>
-    <path d="m178 386 52 66 52-66-13-26h-78z" fill="#d8e1e1"/><path d="m205 431 25 21 25-21-11 119h-29z" fill="#b6f36a"/>
+    <path d="m178 386 52 66 52-66-13-26h-78z" fill="#d8e1e1"/><path d="m205 431 25 21 25-21-11 119h-29z" fill="#0a84ff"/>
     <path d="M163 194c0-85 28-126 68-126s68 41 68 126v91c0 68-34 111-68 111s-68-43-68-111z" fill="url(#skin)"/>
     <path d="M154 198c-8-92 18-154 79-154 69 0 91 54 77 157l-18-35-14-62c-28 29-71 46-124 47z" fill="#131a1d"/>
     <path d="M159 211c-20-12-30 5-20 36 7 18 17 25 28 23m134-59c20-12 30 5 20 36-7 18-17 25-28 23" fill="none" stroke="#dba47f" strokeWidth="13" strokeLinecap="round"/>
     <path d="M191 222h31m16 0h31" fill="none" stroke="#17232a" strokeWidth="7" strokeLinecap="round"/><path d="M222 222h16" stroke="#17232a" strokeWidth="6"/>
     <path d="M229 232l-9 34 13 5" fill="none" stroke="#a56f53" strokeWidth="4" strokeLinecap="round"/><path d="M211 293c12 8 25 8 37 0" fill="none" stroke="#684737" strokeWidth="4" strokeLinecap="round"/>
-    <path d="M151 186c-11-45 5-107 49-131m107 123c13-52-4-100-42-119" fill="none" stroke="#b6f36a" strokeWidth="8" strokeLinecap="round"/>
-    <path d="M146 172v61m168-61v61" fill="none" stroke="#a9e85a" strokeWidth="16" strokeLinecap="round"/><circle cx="146" cy="241" r="8" fill="#e6f5d5"/><circle cx="314" cy="241" r="8" fill="#e6f5d5"/>
+    <path d="M151 186c-11-45 5-107 49-131m107 123c13-52-4-100-42-119" fill="none" stroke="#0a84ff" strokeWidth="8" strokeLinecap="round"/>
+    <path d="M146 172v61m168-61v61" fill="none" stroke="#0672df" strokeWidth="16" strokeLinecap="round"/><circle cx="146" cy="241" r="8" fill="#e8f4ff"/><circle cx="314" cy="241" r="8" fill="#e8f4ff"/>
     <path d="M135 550c10-57 35-90 72-108m118 108c-10-57-35-90-72-108" fill="none" stroke="#415b64" strokeWidth="3"/>
   </svg>;
 }
@@ -40,15 +40,15 @@ function ProjectVisual({ project, index }) {
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    try { return localStorage.getItem('portfolio-theme') || 'dark'; }
-    catch { return 'dark'; }
+    try { return localStorage.getItem('portfolio-theme') || 'light'; }
+    catch { return 'light'; }
   });
   const [activeSlide, setActiveSlide] = useState(0);
   const project = projects[activeSlide];
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    document.querySelector('#theme-color-meta')?.setAttribute('content', theme === 'dark' ? '#090d12' : '#eff2ed');
+    document.querySelector('#theme-color-meta')?.setAttribute('content', theme === 'dark' ? '#08090b' : '#f5f5f7');
     try { localStorage.setItem('portfolio-theme', theme); } catch { /* Theme still works for this session. */ }
   }, [theme]);
 
