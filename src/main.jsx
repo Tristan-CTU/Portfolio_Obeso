@@ -82,20 +82,18 @@ function App() {
 
   return <>
     <header className="topbar flex items-center">
-      <a className="brand" href="#home" aria-label="Tristan Obeso home"><span className="brand-mark">T<span>O</span></span><span className="brand-name">TRISTAN OBESO<small></small></span></a>
+      <a className="brand" href="#home" aria-label="Tristan Obeso home"><span className="brand-mark">T<span>O</span></span><span className="brand-name">TRISTAN OBESO</span></a>
       <nav className="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
       <div className="nav-actions flex items-center"><button className="theme-toggle" type="button" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} aria-pressed={theme === 'light'}><span className="theme-icon" aria-hidden="true">{theme === 'dark' ? '☼' : '☾'}</span></button><button className="hire-button" type="button" onClick={() => setChatOpen(true)}>Let’s talk</button></div>
     </header>
 
     <main id="home">
       <section className="hero">
-        <div className="hero-status"><span className="live-dot"/> OPEN TO THE RIGHT QUEST <span className="status-separator">/</span> PHILIPPINES · GMT+8</div>
         <div className="hero-stage">
-          <div className="hero-copy"><p className="eyebrow">DESIGNER <span>×</span> DEVELOPER <span>×</span></p><h1>Hi, I&apos;m<br/>Tristan Menver<br/>Neil E. Obeso</h1><p className="hero-description">I turn curious ideas into thoughtful digital experiences — with a player’s instinct for discovery and a builder’s eye for detail.</p><div className="hero-actions"><a className="primary-link" href="#work">Explore my work <span>↓</span></a><a className="resume-link" href="/resume.pdf" download="Tristan-Obeso-Resume.pdf">Resume <span>↓</span></a></div></div>
-          <div className="portrait-stage" aria-label="Abstract illustrated player avatar"><div className="portrait-grid"/><div className="portrait-halo"/><Avatar/><span className="portrait-tag tag-top">PLAYER 01 <i>● ONLINE</i></span><span className="portrait-tag tag-bottom">LOADOUT: IDEAS / SKILLS / COFFEE</span><span className="portrait-cross">＋</span></div>
+          <div className="hero-copy"><h1>Hi, I&apos;m<br/>Tristan Menver<br/>Neil E. Obeso</h1><p className="hero-description">I turn curious ideas into thoughtful digital experiences — with a player’s instinct for discovery and a builder’s eye for detail.</p><div className="hero-actions"><a className="primary-link" href="#work">Explore my work <span>↓</span></a><a className="resume-link" href="/resume.pdf" download="Tristan-Obeso-Resume.pdf">Resume <span>↓</span></a></div></div>
+          <div className="portrait-stage" aria-label="Abstract illustrated player avatar"><div className="portrait-grid"/><div className="portrait-halo"/><Avatar/></div>
           <span className="hero-outline" aria-hidden="true">TRISTAN</span>
         </div>
-        <div className="hero-bottom"><span>SCROLL TO EXPLORE</span><span className="scroll-line"/><span>01 — 03</span><span className="hero-location">DESIGNING FROM THE PHILIPPINES</span></div>
       </section>
 
       <section className="work section-wrap" id="work">
