@@ -35,10 +35,9 @@ const skillGroups = [
 ];
 
 const certifications = [
-  { name: 'AWS SBG Core Team Member Badge', issuer: 'Amazon Web Services', date: 'Jul 2026', art: 'aws' },
-  { name: 'Networking Basics', issuer: 'Cisco', date: 'May 2025', art: 'cisco' },
-  { name: 'iLeap IP Course Certificate', issuer: 'IPOPHL', date: 'May 2024', art: 'ipophil' },
-  { name: 'Introduction to Python', issuer: 'Coursera', date: 'Apr 2024', art: 'coursera' },
+  { name: 'Networking Basics', issuer: 'Cisco Networking Academy', date: 'May 20, 2025', art: 'cisco', file: '/certificates/cisco-networking-basics.pdf', image: '/certificates/cisco-networking-basics.png' },
+  { name: 'iLEAP Course on Intellectual Property', issuer: 'IPOPHL', date: 'May 8, 2024', art: 'ipophil', file: '/certificates/ileap-ip-course-certificate.pdf', image: '/certificates/ileap-ip-course-certificate.png' },
+  { name: 'Introduction to Python', issuer: 'Coursera', date: 'Mar 25, 2024', art: 'coursera', file: '/certificates/coursera-introduction-to-python.pdf', image: '/certificates/coursera-introduction-to-python.png' },
 ];
 
 const volunteering = [
@@ -175,10 +174,10 @@ function App() {
       </section>
 
       <section className="cert-section section-wrap" id="certifications">
-        <div className="section-heading"><div><p className="eyebrow">LEARNING & RECOGNITION</p><h2>Certifications<span>.</span></h2></div><p className="section-note">Certificate pictures can be<br/>added here when you’re ready.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">LEARNING & RECOGNITION</p><h2>Certifications<span>.</span></h2></div><p className="section-note">Courses completed and<br/>community recognition.</p></div>
         <div className="certificate-grid">{certifications.map((certificate) => <article className="certificate-card" key={certificate.name}>
-          <div className={`certificate-image certificate-${certificate.art}`}>{certificate.image ? <img className="certificate-photo" src={certificate.image} alt={`${certificate.name} certificate`} loading="lazy"/> : <div className="certificate-frame"><span className="certificate-stamp">{certificate.issuer === 'Amazon Web Services' ? 'aws' : certificate.issuer}</span><span className="certificate-rule"/><span className="certificate-image-hint">Add certificate image</span></div>}</div>
-          <div className="certificate-info"><p>{certificate.issuer} · {certificate.date}</p><h3>{certificate.name}</h3></div>
+          <div className={`certificate-image certificate-${certificate.art}`}>{certificate.image ? <a className="certificate-preview-link" href={certificate.file} target="_blank" rel="noreferrer" aria-label={`Open ${certificate.name} certificate`}><img className="certificate-photo" src={certificate.image} alt={`${certificate.name} certificate`} loading="lazy"/></a> : <div className="certificate-frame"><span className="certificate-stamp">aws</span><span className="certificate-rule"/><span className="certificate-image-hint">Core team member badge</span></div>}</div>
+          <div className="certificate-info"><p>{certificate.issuer} · {certificate.date}</p><h3>{certificate.name}</h3>{certificate.file && <a className="certificate-link" href={certificate.file} target="_blank" rel="noreferrer">View certificate <span aria-hidden="true">↗</span></a>}</div>
         </article>)}</div>
       </section>
 
