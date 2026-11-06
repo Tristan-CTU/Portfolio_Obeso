@@ -40,12 +40,7 @@ const certifications = [
   { name: 'Introduction to Python', issuer: 'Coursera', date: 'Mar 25, 2024', art: 'coursera', file: '/certificates/coursera-introduction-to-python.pdf', image: '/certificates/coursera-introduction-to-python.png' },
 ];
 
-const volunteering = [
-  { role: 'Core Technical Officer', group: 'AWS Student Builder Group · Cebu Technological University — Main Campus', date: 'Jul 2026 – Present', location: 'Cebu City, Philippines', details: ['Conduct technical sessions and hands-on workshops covering cloud computing, software development, and AWS technologies.', 'Collaborate with fellow officers to organize activities and guide students through practical learning and projects.'] },
-  { role: 'Chief Technical Officer', group: 'Google Developer Group · Cebu Technological University — Main Campus', date: 'Oct 2026 – Present', location: 'Cebu City, Philippines', details: ['Promoted in October 2026 after serving as Web & Systems Lead Officer from August to September 2026.', 'Manage software development projects and technical programs, coordinate the team, and support the group’s website and hackathons.'] },
-  { role: 'Usher & Website Maintainer', group: 'AWS Community Day Cebu 2026', date: 'Sep 2026', location: 'University of the Philippines Cebu', details: ['Supported attendee guidance and crowd flow during the event.', 'Maintained the event website by adding content, improving responsiveness, and applying organizer feedback.'] },
-  { role: 'Web & Systems Lead Officer', group: 'Google Developer Group · Cebu Technological University — Main Campus', date: 'Aug 2026 – Sep 2026', location: 'Cebu City, Philippines', details: ['Led development of the group website, delegated tasks, and coordinated delivery with the technical team.'] },
-];
+const workshopLink = 'https://luma.com/watp40f7?fbclid=IwY2xjawVaT_ZleHRuA2FlbQIxMABwZG9mBWJyaWQRMVkxR2daNUFYS3hkeVdBM3RzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEf2WsI0-_0kQepfDTaKEMf_vseSVSbNW1H3lNJyASoqpjrIdf8qZU2mYj-UwE_aem_KTEPTvYfyN1w_vdA22Pvgw&tk=LFpEIZ&utm_id=97758_v0_s00_e0_tv2';
 
 function Avatar() {
   return <svg className="avatar" viewBox="0 0 460 550" role="img" aria-labelledby="avatar-title">
@@ -181,9 +176,9 @@ function App() {
         </article>)}</div>
       </section>
 
-      <section className="volunteer-section section-wrap" id="volunteering">
-        <div className="section-heading"><div><p className="eyebrow">COMMUNITY & LEADERSHIP</p><h2>Volunteering<span>.</span></h2></div><p className="section-note">Building with people,<br/>sharing what I learn.</p></div>
-        <div className="volunteer-list">{volunteering.map((item) => <article className="volunteer-item" key={`${item.role}-${item.date}`}><div className="volunteer-heading"><div><h3>{item.role}</h3><p>{item.group}</p></div><div className="volunteer-date"><strong>{item.date}</strong><span>{item.location}</span></div></div><ul>{item.details.map((detail) => <li key={detail}>{detail}</li>)}</ul></article>)}</div>
+      <section className="workshop-section section-wrap" id="workshops">
+        <div className="section-heading"><div><p className="eyebrow">LEARNING & COMMUNITY</p><h2>Workshops<span>.</span></h2></div><p className="section-note">Explore the event<br/>details on Luma.</p></div>
+        <article className="workshop-card"><div className="workshop-copy"><p className="eyebrow">FEATURED WORKSHOP</p><h3>Workshop</h3><p>Event details and registration are available on Luma.</p></div><a className="workshop-link" href={workshopLink} target="_blank" rel="noreferrer">Open event page <span aria-hidden="true">↗</span></a></article>
       </section>
 
       <section className="work section-wrap" id="work">
